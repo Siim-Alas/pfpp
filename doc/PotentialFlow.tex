@@ -25,40 +25,40 @@ distribution on $S$ caused by and adiabatic inviscid irrotational flow given by
 
 \begin{equation}
 \label{eq:DefinitionOfPotentialFlow}
-	\vec{u} = \nabla \phi
+	\mathbf{u} = \nabla \phi
 \end{equation}
 
-where $\vec{u} = \vec{u}(\vec{x}, t)$ is the flow velocity vector and $\phi =
-\phi(\vec{x}, t)$ is the velocity potential at some position vector $\vec{x} \in
-\mathbb{R}^3$ and time coordinate $t \in \mathbb{R}$.
+where $\mathbf{u} = \mathbf{u}(\mathbf{x}, t)$ is the flow velocity vector and
+$\phi = \phi(\mathbf{x}, t)$ is the velocity potential at some position vector
+$\mathbf{x} \in \mathbb{R}^3$ and time coordinate $t \in \mathbb{R}$.
 
 \subsection{Far field boundary conditions}
 
 Given a Cartesian coordinate system in $\mathbb{R}^3$ centered near $S$ with a
-position vector $\vec{x}$, we write the far field boundary conditions as
+position vector $\mathbf{x}$, we write the far field boundary conditions as
 
 \begin{subequations}
 	\begin{align}
-		\lim_{|\vec{x}| \rightarrow \infty} p(\vec{x})  & = p_{\infty} =
+		\lim_{|\mathbf{x}| \rightarrow \infty} p(\mathbf{x})  & = p_{\infty} =
 		\text{const.} \label{eq:FarFieldPressureConstraint} \\
-		\lim_{|\vec{x}| \rightarrow \infty} \rho(\vec{x})  & = \rho_{\infty} =
-		\text{const.}
+		\lim_{|\mathbf{x}| \rightarrow \infty} \rho(\mathbf{x})  & =
+		\rho_{\infty} = \text{const.}
 		\label{eq:FarFieldDensityConstraint} \\
-		\lim_{|\vec{x}| \rightarrow \infty} \vec{u}(\vec{x}) & =
-		\vec{u}_{\infty} = \text{const.}
+		\lim_{|\mathbf{x}| \rightarrow \infty} \mathbf{u}(\mathbf{x}) & =
+		\mathbf{u}_{\infty} = \text{const.}
 		\label{eq:FarFieldVelocityConstraint}
 	\end{align}
 \end{subequations}
 
 \subsection{Tangential flow}
 
-The tangential flow constraint requires that, for any normal vector $\vec{n} =
-\vec{n}(\vec{x})$ to the surface $S$,
+The tangential flow constraint requires that, for any normal vector $\mathbf{n}
+= \mathbf{n}(\mathbf{x})$ to the surface $S$,
 
 \begin{equation}
 \label{eq:TangentialFlowConstraint}
-	\vec{n} \cdot \vec{u} = \vec{n} \cdot \nabla \phi = 0 \qquad ; \qquad
-	\forall \vec{x} \in S
+	\mathbf{n} \cdot \mathbf{u} = \mathbf{n} \cdot \nabla \phi = 0 \qquad ;
+	\qquad \forall \mathbf{x} \in S
 \end{equation}
 
 \section{Solution}
@@ -69,15 +69,16 @@ Using Helmholtz decomposition, we get
 
 \begin{equation}
 \label{eq:HelmholtzDecomposedPhi}
-	\phi(\vec{x}, t) = \frac{1}{4 \pi} \int_{\partial V_i} \hat{n}(\vec{x}')
-	\cdot \frac{\nabla' \phi(\vec{x}', t)}{|\vec{x} - \vec{x}'|} dS' -
-	\frac{1}{4 \pi} \int_{V_i} \frac{\nabla'^2 \phi(\vec{x}', t)}{|\vec{x} -
-	\vec{x}'|} dV' \quad ; \quad \forall \vec{x} \in V_i
+	\phi(\mathbf{x}, t) = \frac{1}{4 \pi} \int_{\partial V_i} \mathbf{n}(
+	\mathbf{x}') \cdot \frac{\nabla' \phi(\mathbf{x}', t)}{|\mathbf{x} -
+	\mathbf{x}'|} dS' - \frac{1}{4 \pi} \int_{V_i} \frac{\nabla'^2 \phi(
+	\mathbf{x}', t)}{|\mathbf{x} - \mathbf{x}'|} dV' \quad ; \quad \forall
+	\mathbf{x} \in V_i
 \end{equation}
 
 for any compact domain $V_i \subset \mathbb{R}^3$ with a piecewise smooth
 boundary $\partial V_i$, where the primed symbols above are with respect to the
-new $\vec{x}'$ dummy variables and $\hat{n}$ is the outward pointing unit
+new $\mathbf{x}'$ dummy variables and $\mathbf{n}$ is the outward pointing unit
 normal vector to $\partial V_i$.
 
 To extend this result to exterior domains, we define $V_e = V - (V_i - \partial
@@ -91,38 +92,40 @@ piecewise smooth surface containing exactly one hole and satisfying $(V_{e1}
 summing the results leads to
 
 \begin{multline*}
-	\phi(\vec{x}, t) = - \frac{1}{4 \pi} \int_{\partial V_i}
-	\hat{n}(\vec{x}') \cdot \frac{\nabla' \phi(\vec{x}', t)}{|\vec{x} -
-	\vec{x}'|} dS' + \frac{1}{4 \pi} \int_{\partial V} \hat{n}(\vec{x}')
-	\cdot \frac{\nabla' \phi(\vec{x}', t)}{|\vec{x} - \vec{x}'|} dS' - \\
-	- \frac{1}{4 \pi} \int_{V_e} \frac{\nabla'^2 \phi(\vec{x}', t)}{|\vec{x}
-	- \vec{x}'|} dV' \quad ; \quad \forall \vec{x} \in V_e
+	\phi(\mathbf{x}, t) = - \frac{1}{4 \pi} \int_{\partial V_i} \mathbf{n}(
+	\mathbf{x}') \cdot \frac{\nabla' \phi(\mathbf{x}', t)}{|\mathbf{x} -
+	\mathbf{x}'|} dS' + \frac{1}{4 \pi} \int_{\partial V} \mathbf{n}(
+	\mathbf{x}') \cdot \frac{\nabla' \phi(\mathbf{x}', t)}{|\mathbf{x} -
+	\mathbf{x}'|} dS' - \\
+	- \frac{1}{4 \pi} \int_{V_e} \frac{\nabla'^2 \phi(\mathbf{x}', t)}{|
+	\mathbf{x} - \mathbf{x}'|} dV' \quad ; \quad \forall \mathbf{x} \in V_e
 \end{multline*}
 
 We then note that applying (\ref{eq:FarFieldVelocityConstraint}) on $\partial V$
 as $V \rightarrow \mathbb{R}^3$ leads to
 
 \begin{multline*}
-	\frac{1}{4 \pi} \int_{\partial V} \hat{n}(\vec{x}') \cdot \frac{\nabla'
-	\phi(\vec{x}', t)}{|\vec{x} - \vec{x}'|} dS' = - \frac{1}{4 \pi} \int_{
-	\partial V_i} \hat{n}(\vec{x}') \cdot \frac{(\vec{u}_{\infty} -
-	\vec{u}_{\infty})}{|\vec{x} - \vec{x}'|} dS' + \\
-	+ \frac{1}{4 \pi} \int_{\partial V} \hat{n}(\vec{x}') \cdot \frac{
-	\vec{u}_{\infty}}{|\vec{x} - \vec{x}'|} dS' - \frac{1}{4 \pi} \int_{V_e}
-	\frac{\nabla' \cdot \vec{u}_{\infty}}{|\vec{x} - \vec{x}'|} dV'
+	\frac{1}{4 \pi} \int_{\partial V} \mathbf{n}(\mathbf{x}') \cdot \frac{
+	\nabla' \phi(\mathbf{x}', t)}{|\mathbf{x} - \mathbf{x}'|} dS' = - \frac{1}{4
+	\pi} \int_{\partial V_i} \mathbf{n}(\mathbf{x}') \cdot \frac{(\mathbf{u}_{
+	\infty} - \mathbf{u}_{\infty})}{|\mathbf{x} - \mathbf{x}'|} dS' + \\
+	+ \frac{1}{4 \pi} \int_{\partial V} \mathbf{n}(\mathbf{x}') \cdot \frac{
+	\mathbf{u}_{\infty}}{|\mathbf{x} - \mathbf{x}'|} dS' - \frac{1}{4 \pi}
+	\int_{V_e} \frac{\nabla' \cdot \mathbf{u}_{\infty}}{|\mathbf{x} -
+	\mathbf{x}'|} dV'
 \end{multline*}
 
 since the divergence of a constant vector field is always zero, meaning that
 
 \begin{multline}
 \label{eq:HelmholtzDecomposedPhiInVe}
-	\phi(\vec{x}, t) - \vec{u}_{\infty} \cdot \vec{x} = - \frac{1}{4 \pi}
-	\int_{\partial V_i} \hat{n}(\vec{x}') \cdot \frac{\nabla' \left(
-	\phi(\vec{x}', t) - \vec{u}_{\infty} \cdot \vec{x}' \right)}{|\vec{x} -
-	\vec{x}'|} dS' - \\
-	- \frac{1}{4 \pi} \int_{V_e} \frac{\nabla'^2 \left( \phi(\vec{x}', t) -
-	\vec{u}_{\infty} \cdot \vec{x}' \right)}{|\vec{x} - \vec{x}'|} dV' \quad
-	; \quad \forall \vec{x} \in V_e
+	\phi(\mathbf{x}, t) - \mathbf{u}_{\infty} \cdot \mathbf{x} = - \frac{1}{4
+	\pi} \int_{\partial V_i} \mathbf{n}(\mathbf{x}') \cdot \frac{\nabla' \left(
+	\phi(\mathbf{x}', t) - \mathbf{u}_{\infty} \cdot \mathbf{x}' \right)}{|
+	\mathbf{x} - \mathbf{x}'|} dS' - \\
+	- \frac{1}{4 \pi} \int_{V_e} \frac{\nabla'^2 \left( \phi(\mathbf{x}', t) -
+	\mathbf{u}_{\infty} \cdot \mathbf{x}' \right)}{|\mathbf{x} - \mathbf{x}'|}
+	dV' \quad ; \quad \forall \mathbf{x} \in V_e
 \end{multline}
 
 \subsection{Incompressible flow}
@@ -131,47 +134,38 @@ For an incompressible flow,
 
 \begin{equation}
 \label{eq:IncompressiblePotentialFlowEquation}
-	\nabla \cdot \vec{u} = \nabla \cdot \nabla \phi = \nabla^2 \phi = 0
+	\nabla \cdot \mathbf{u} = \nabla \cdot \nabla \phi = \nabla^2 \phi = 0
 \end{equation}
 
-meaning that $\phi$ satisfies Laplace's equation and is thereby harmonic. We
-note that (\ref{eq:IncompressiblePotentialFlowEquation}), when combined with
-(\ref{eq:TangentialFlowConstraint}), (\ref{eq:HelmholtzDecomposedPhi}), and
-(\ref{eq:HelmholtzDecomposedPhiInVe}), results in
-
-\begin{equation}
-\label{eq:PhiInSAndV}
-	\phi(\vec{x}, t) = 0 \qquad ; \qquad \forall \vec{x} \in V_i
-\end{equation}
-
-and
-
-\begin{equation}
-\label{eq:IncompressiblePhiInVe}
-	\phi(\vec{x}, t) - \vec{u}_{\infty} \cdot \vec{x} = - \frac{1}{4 \pi}
-	\int_S \hat{n}(\vec{x}') \cdot \frac{\nabla' \left( \phi(\vec{x}', t) -
-	\vec{u}_{\infty} \cdot \vec{x}' \right)}{|\vec{x} - \vec{x}'|} dS' \quad ;
-	\quad \forall \vec{x} \in V_e
-\end{equation}
-
-Defining the source strength $\sigma(\vec{x}, t) = \hat{n}(\vec{x}) \cdot \nabla
-\left( \phi(\vec{x}, t) - \vec{u}_{\infty} \cdot \vec{x} \right)$, allows us to
-write (\ref{eq:IncompressiblePhiInVe}) as
+turning (\ref{eq:HelmholtzDecomposedPhiInVe}) into
 
 \begin{equation*}
-	\phi(\vec{x}, t) = \vec{u}_{\infty} \cdot \vec{x} - \frac{1}{4 \pi} \int_S
-	\frac{\sigma(\vec{x}', t)}{|\vec{x} - \vec{x}'|} dS' \qquad ; \qquad \forall
-	\vec{x} \in V_e
+	\phi(\mathbf{x}, t) - \mathbf{u}_{\infty} \cdot \mathbf{x} = - \frac{1}{4
+	\pi} \int_{\partial V_i} \mathbf{n}(\mathbf{x}') \cdot \frac{\nabla' \left(
+	\phi(\mathbf{x}', t) - \mathbf{u}_{\infty} \cdot \mathbf{x}' \right)}{|
+	\mathbf{x} - \mathbf{x}'|} dS' \quad ; \quad \forall \mathbf{x} \in V_e
 \end{equation*}
 
-For $\phi$ to be single-valued and continuous, we equate (\ref{eq:PhiInSAndV})
-with (\ref{eq:IncompressiblePhiInVe}) on $V_e \cap V_i = S$ and simplify to get
-the condition
+Defining the source strength $\sigma(\mathbf{x}, t) = \mathbf{n}(\mathbf{x}, t)
+\cdot \nabla \left( \phi(\mathbf{x}, t) - \mathbf{u}_{\infty} \cdot \mathbf{x}
+\right)$ and noting that $\partial V_i = S$, we write this as
 
 \begin{equation*}
-	\frac{1}{4 \pi} \int_S \frac{\sigma(\vec{x}', t)}{|\vec{x} - \vec{x}'|} dS'
-	= \vec{u}_{\infty} \cdot \vec{x} \qquad ; \qquad \forall \vec{x} \in S
+	\phi(\mathbf{x}, t) = \mathbf{u}_{\infty} \cdot \mathbf{x} - \frac{1}{4 \pi}
+	\int_S \frac{\sigma(\mathbf{x}', t)}{|\mathbf{x} - \mathbf{x}'|} dS' \qquad
+	; \qquad \forall \mathbf{x} \in V_e
 \end{equation*}
+
+Applying (\ref{eq:TangentialFlowConstraint}) to the above equation and
+simplifying leads to
+
+\begin{equation}
+\label{eq:IncompressibleSourcePanelMethodEquation}
+	\mathbf{n}(\mathbf{x}) \cdot \int_S \sigma(\mathbf{x}', t) \frac{\mathbf{x}'
+	- \mathbf{x}}{|\mathbf{x}' - \mathbf{x}|} dS' = 4 \pi \mathbf{n}(\mathbf{x})
+	\cdot \mathbf{u}_{\infty} \: \Rightarrow \: \frac{\partial \sigma(
+	\mathbf{x}, t)}{\partial t} = 0 \quad ; \quad \forall \mathbf{x} \in S
+\end{equation}
 
 \end{document}
 
