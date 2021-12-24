@@ -3,11 +3,9 @@
 #define _USE_MATH_DEFINES
 
 #include <cmath>	// std::sqrt
-#include <cstddef>	// size_t
 
 #include "../out/_deps/lapp-src/src/matops.h"
 #include "../out/_deps/lapp-src/src/vec.h"
-#include "../out/_deps/lapp-src/src/vecops.h"
 
 #include "triangular_source_panel.h"
 
@@ -51,7 +49,7 @@ namespace pfpp::source_panel_method
 				lapp::vec<3, T> dx = source_panels[j].centroid() - current_pos;
 				T sqr_dist = dx.sqr_len();
 				T dist = std::sqrt(sqr_dist);
-				T S = 0.5;
+				T S = source_panels[j].area();
 
 				equation_array[i][j] =
 					(dist == 0) ? 0 : n.dot(dx) * S / (dist * sqr_dist);

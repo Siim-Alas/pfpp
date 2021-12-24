@@ -103,7 +103,7 @@ int main()
 				continue;
 			}
 
-			sum += (float)(results[j] / (4 * M_PI * sqr_dist * std::sqrt(sqr_dist))) * 0.5f * dx;
+			sum += (float)(results[j] / (4 * M_PI * sqr_dist * std::sqrt(sqr_dist))) * source_panels[j].area() * dx;
 		}
 
 		if (std::abs(sum.dot(source_panels[i].N)) > allowable_error)
