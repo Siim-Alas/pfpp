@@ -86,7 +86,7 @@ int main()
 	lapp::vec<3, float> u_infty = { 10, 0, 0 };
 	float results[N];
 
-	pfpp::source_panel_method::find_source_strengths<N, float>(source_panels, u_infty, results);
+	pfpp::source_panel_method::find_source_strengths<float>(source_panels, u_infty, results, N);
 
 	for (int i = 0; i < N; i++)
 	{
