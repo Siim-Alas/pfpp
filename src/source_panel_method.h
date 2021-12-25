@@ -4,9 +4,10 @@
 
 #include <cmath>	// std::sqrt
 
-#include "../out/_deps/lapp-src/src/matops.h"
+#include "../out/_deps/lapp-src/src/mat.h"
 #include "../out/_deps/lapp-src/src/vec.h"
 
+#include "aerodynamics.h"
 #include "triangular_source_panel.h"
 
 namespace pfpp::source_panel_method
@@ -38,7 +39,7 @@ namespace pfpp::source_panel_method
 		T *results,
 		size_t num_of_panels)
 	{
-		T *equation_array = new T[num_of_panels * (num_of_panels + 1)];
+		lapp::mat<T> equation_matrix(num_of_panels, num_of_panels + 1);
 
 		for (int i = 0; i < num_of_panels; i++)
 		{
@@ -52,18 +53,29 @@ namespace pfpp::source_panel_method
 				T dist = std::sqrt(sqr_dist);
 				T S = source_panels[j].area();
 
-				equation_array[lapp::matops::rmi(i, j, num_of_panels + 1)] =
+				equation_matrix[i][j] =
 					(dist == 0) ? 0 : n.dot(dx) * S / (dist * sqr_dist);
 			}
 
-			equation_array[lapp::matops::rmi(i, num_of_panels,
-					num_of_panels + 1)] = 4 * M_PI * n.dot(u_infty);
+			equation_matrix[i][num_of_panels] = 4 * M_PI * n.dot(u_infty);
 		}
 
-		lapp::matops::solve_linear_system_in_place_with_gaussian_elimination<T>(
-				equation_array, results, num_of_panels);
+		equation_matrix.solve_linear_system_in_place(results);
+	}
 
-		delete[] equation_array;
+	template <typename T>
+	void solve(
+		const pfpp::triangular_source_panel<T> *source_panels,
+		const lapp::vec<3, T> &u_infty,
+		lapp::vec<3, T> &reaction_coefficient,
+		size_t number_of_panels)
+	{
+		T *source_strengths = new T[number_of_panels];
+		find_source_strengths<T>(
+			source_panels, u_infty, source_strengths, number_of_panels);
+
+		reaction_coefficient = aerodynamics::reaction_coefficient(
+			source_panels, source_strengths, u_infty, number_of_panels);
 	}
 }
 

@@ -12,6 +12,8 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(lapp)
 
+add_executable(pfpp src/aerodynamics.h src/binary_stl_parser.cpp src/binary_stl_parser.h src/program.cpp src/source_panel_method.h src/triangular_source_panel.h)
+
 enable_testing()
 
 add_executable(IncludingLAPPWorks tests/IncludingLAPPWorks.cpp)
