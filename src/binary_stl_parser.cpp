@@ -37,12 +37,15 @@ pfpp::binary_stl_parser::parse_stl(const char *filename)
 	for (int i = 0; i < num_of_panels; i++)
 	{
 		// Read one triangle from the STL file
-		if (fread(&(source_panels[i]), sizeof(triangular_source_panel<float>),
+		if (fread(&(source_panels[i]), 4 * 3 * sizeof(float),
 				1, stl_file) != 1)
 		{
 			printf("Error reading the %d-th source panel\n", i);
 			return err_result;
 		}
+
+		source_panels[i].compute_centroid();
+		source_panels[i].compute_surface_area();
 
 		// Skip the 2-byte "attribute byte count"
 		if (fseek(stl_file, 2, SEEK_CUR))

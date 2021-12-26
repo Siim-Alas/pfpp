@@ -18,25 +18,19 @@ namespace pfpp::aerodynamics
 		const lapp::vec<3, T> &u_infty,
 		size_t number_of_panels)
 	{
-		T *panel_areas = new T[number_of_panels];
 		T total_area = 0;
-		for (int i = 0; i < number_of_panels; i++)
-		{
-			panel_areas[i] = source_panels[i].area();
-			total_area += panel_areas[i];
-		}
 
 		lapp::vec<3, T> reaction_coefficient = { 0, 0, 0 };
 		T sqr_len_of_u_infty = u_infty.sqr_len();
 
 		for (int i = 0; i < number_of_panels; i++)
 		{
-			lapp::vec<3, T> current_pos = source_panels[i].centroid();
+			lapp::vec<3, T> current_pos = source_panels[i].centroid;
 			lapp::vec<3, T> u = u_infty;
 
 			for (int j = 0; j < number_of_panels; j++)
 			{
-				lapp::vec<3, T> dx = current_pos - source_panels[j].centroid();
+				lapp::vec<3, T> dx = current_pos - source_panels[j].centroid;
 				T sqr_dist = dx.sqr_len();
 
 				if (sqr_dist == 0)
@@ -52,12 +46,12 @@ namespace pfpp::aerodynamics
 
 			// For an outward-pointing unit normal vector source_panels[i].N
 			reaction_coefficient -= (1 - u.sqr_len() / sqr_len_of_u_infty) *
-				panel_areas[i] * source_panels[i].N;
+				source_panels[i].surface_area * source_panels[i].N;
+
+			total_area += source_panels[i].surface_area;
 		}
 
 		reaction_coefficient /= total_area;
-
-		delete[] panel_areas;
 
 		return reaction_coefficient;
 	}

@@ -43,15 +43,15 @@ namespace pfpp::source_panel_method
 
 		for (int i = 0; i < num_of_panels; i++)
 		{
-			lapp::vec<3, T> current_pos = source_panels[i].centroid();
+			lapp::vec<3, T> current_pos = source_panels[i].centroid;
 			lapp::vec<3, T> n = source_panels[i].N;
 
 			for (int j = 0; j < num_of_panels; j++)
 			{
-				lapp::vec<3, T> dx = source_panels[j].centroid() - current_pos;
+				lapp::vec<3, T> dx = source_panels[j].centroid - current_pos;
 				T sqr_dist = dx.sqr_len();
 				T dist = std::sqrt(sqr_dist);
-				T S = source_panels[j].area();
+				T S = source_panels[j].surface_area;
 
 				equation_matrix[i][j] =
 					(dist == 0) ? 0 : n.dot(dx) * S / (dist * sqr_dist);

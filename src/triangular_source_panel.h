@@ -13,20 +13,22 @@ namespace pfpp
 		lapp::vec<3, T> A;
 		lapp::vec<3, T> B;
 		lapp::vec<3, T> C;
+		lapp::vec<3, T> centroid;
+		T surface_area;
 
-		const T area() const
+		void compute_centroid()
+		{
+			centroid = (A + B + C) / 3;
+		}
+
+		void compute_surface_area()
 		{
 			lapp::vec<3, T> AB = B - A;
 			lapp::vec<3, T> AC = C - A;
 			T AB_dot_AC = AB.dot(AC);
 
-			return 0.5 * std::sqrt(
+			surface_area = 0.5 * std::sqrt(
 				AB.sqr_len() * AC.sqr_len() - AB_dot_AC * AB_dot_AC);
-		}
-
-		const lapp::vec<3, T> centroid() const
-		{
-			return (A + B + C) / 3;
 		}
 	};
 }
